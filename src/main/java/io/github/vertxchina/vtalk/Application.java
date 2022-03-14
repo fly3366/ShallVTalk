@@ -3,6 +3,7 @@ package io.github.vertxchina.vtalk;
 import io.github.vertxchina.nodes.NavigatableScene;
 import io.github.vertxchina.vtalk.dialogpane.DialogPane;
 import io.github.vertxchina.vtalk.indexpane.IndexPane;
+import javafx.application.HostServices;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -12,6 +13,7 @@ import java.util.HashMap;
 public class Application extends javafx.application.Application {
   public static Font GLOBAL_FONT;
   public static String GLOBAL_FONT_FAMILY;
+  public static HostServices hostServices;
 
   @Override
   public void start(Stage stage) throws IOException {
@@ -20,11 +22,13 @@ public class Application extends javafx.application.Application {
     scene.route("/dialog", DialogPane::new);
     stage.setScene(scene);
     stage.show();
+
+    hostServices = this.getHostServices();
   }
 
   public static void main(String[] args) {
-    GLOBAL_FONT = Font.loadFont(Application.class.getResourceAsStream("/font/zcool.ttf"), 12);
-    GLOBAL_FONT_FAMILY = "-fx-font-family: "+GLOBAL_FONT.getFamily();
+    GLOBAL_FONT = Font.loadFont(Application.class.getResourceAsStream("/font/SourceHanSerifCN-VF.ttf"), 12);
+    GLOBAL_FONT_FAMILY = "-fx-font-family: \""+GLOBAL_FONT.getFamily()+"\"";
     launch(Application.class, args);
   }
 }

@@ -9,7 +9,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Screen;
 
 import java.net.Socket;
-import java.time.format.DateTimeFormatter;
 import java.util.Map;
 
 import static io.github.vertxchina.vtalk.Application.GLOBAL_FONT_FAMILY;
@@ -26,7 +25,7 @@ public class DialogPane extends BorderPane {
 
     var rightUserList = new RightView();
     var centerPane = new CenterPane();
-    var bottomPane = new BottomPane(socket);
+    var bottomPane = new BottomPane(socket, centerPane);
 
     this.setRight(rightUserList);
     this.setCenter(centerPane);
